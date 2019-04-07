@@ -2,6 +2,8 @@
 
 node{
     stage("first"){
+        git clone 'https://github.com/1994newbie/Python-Jenkins.git'
+        sh 'cd Python-Jenkins'
         sh 'ls -l'
     }
 }

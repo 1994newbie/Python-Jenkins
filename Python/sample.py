@@ -6,7 +6,7 @@ def ADD(x,y):
 
 
 def ADD_TesT():
-    assert ADD(3,4) == 9, "sum should be 7"
+    assert ADD(3,4) == 7, "sum should be 7"
 
 if __name__=="__main__":
     ADD_TesT()

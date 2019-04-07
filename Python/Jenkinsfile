@@ -1,12 +1,7 @@
 #!groovy
 
 node{
-    stages{
-        stage('first stage'){
-            sh 'export workspace='pwd''
-        }
-        stage('second stage'){
-            sh 'ls -l'
-        }
+    stage("first"){
+        echo "hello"
     }
 }

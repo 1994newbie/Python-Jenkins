@@ -2,7 +2,6 @@
 
 node{
     stage("first"){
-        sh 'export WORKSPACE='pwd''
         sh 'ls -l'
     }
 }

@@ -1,3 +1,5 @@
+!#groovy
+
 node{
     stages{
         stage('first stage'){

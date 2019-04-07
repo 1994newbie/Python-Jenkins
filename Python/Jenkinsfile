@@ -1,9 +1,22 @@
 #!groovy
 
 node{
-    stage("first"){
-        git clone 'https://github.com/1994newbie/Python-Jenkins.git'
-        sh 'cd Python-Jenkins'
-        sh 'ls -l'
+    stage('Checkout Stage'){
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/1994newbie/Python-Jenkins.git']]])
+    }
+    stage('Changing Permissions'){
+        sh 'chmod -R 777 ./venv '
+    }
+    stage('Setting up the Environment'){
+        sh """
+        . ./venv/bin/activate
+        pip install -r requirements.txt
+        """
+    }
+    stage('Runnig Test Cases'){
+        sh """
+        . ./venv/bin/activate
+        python ./Python/sample.py
+        """
     }
 }

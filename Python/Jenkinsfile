@@ -20,6 +20,6 @@ node{
         """
     }
     stage('Cleanup Stage'){
-        sh 'echo 'Hello World''
+        
     }
 }

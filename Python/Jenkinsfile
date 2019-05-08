@@ -1,22 +1,25 @@
 #!groovy
 
 node{
-    stage('Checkout Stage'){
+    stage('initialization Stage'){
         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/1994newbie/Python-Jenkins.git']]])
     }
-    stage('Changing Permissions'){
+    stage('Provision Stage'){
         sh 'chmod -R 777 ./venv '
     }
-    stage('Setting up the Environment'){
+    stage('Execution Stage'){
         sh """
         . ./venv/bin/activate
         pip install -r requirements.txt
         """
     }
-    stage('Runnig Test Cases'){
+    stage('Test Stage'){
         sh """
         . ./venv/bin/activate
         python ./Python/sample.py
         """
+    }
+    stage('Cleanup Stage'){
+        sh 'echo 'Hello World''
     }
 }
